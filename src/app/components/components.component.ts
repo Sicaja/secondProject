@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { TestService } from '../services/test.service';
 
 @Component({
   selector: 'app-components',
@@ -9,4 +10,10 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.scss'],
 })
-export class ComponentsComponent {}
+export class ComponentsComponent {
+  testService = inject(TestService);
+
+  constructor() {
+    this.testService.test();
+  }
+}
